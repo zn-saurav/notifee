@@ -215,9 +215,13 @@ public class ReceiverService extends Service {
       // See
       // https://developer.android.com/about/versions/12/behavior-changes-all#close-system-dialogs
       if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
-        ContextHolder.getApplicationContext()
+        try {
+          ContextHolder.getApplicationContext()
             .sendBroadcast(new Intent(Intent.ACTION_CLOSE_SYSTEM_DIALOGS));
-      }
+        } catch (SecurityException e) {
+          Log.e("ReceiverService", "Unable to send broadcast to close system dialogs", e);
+        }
+      }  
     }
   }
 
