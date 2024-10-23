@@ -1,6 +1,5 @@
 {
   "name": "@notifee/tests-react-native",
-  "version": "0.2.3",
   "private": true,
   "scripts": {
     "build:clean": "rimraf dist && rimraf android/build && rimraf android/app/build && rimraf android/.gradle && rimraf ios/build",
